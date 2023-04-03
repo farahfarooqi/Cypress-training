@@ -13,22 +13,24 @@ beforeEach( ()=>{
   cy.contains('Register').click()
 })
 
-    // it('positive case', () => {
-    
-    //  cy.get('input[id="customer.firstName"]').type(credentials[0].Firstname).should('have.value',credentials[0].Firstname)
-    //  cy.get('input[id="customer.lastName"]').type(credentials[0].Lastname).should(credentials[0].Lastname)
-    //  cy.get('input[id="customer.address.street"]').type(credentials[0].Address).should('have.value',credentials[0].Address)
-    //  cy.get('input[id="customer.address.city"]').type(credentials[0].City).should('have.value',credentials[0].City)
-    //  cy.get('input[id="customer.address.state"]').type(credentials[0].State).should('have.value',credentials[0].State)
-    //  cy.get('input[id="customer.address.zipCode"]').type(credentials[0].Zipcode).should('have.value',credentials[0].Zipcode)
-    //  cy.get('input[id="customer.phoneNumber"]').type(credentials[0].Phonenumber).should('have.value',credentials[0].Phonenumber)
-    //  cy.get('input[id="customer.ssn"]').type(credentials[0].SSN).should('have.value',credentials[0].SSN)
-    //  cy.get('input[id="customer.username"]').type(credentials[0].Username).should('have.value',credentials[0].Username)
-    //  cy.get('input[id="customer.password"]').type(credentials[0].Password).should('have.value',credentials[0].Password)
-    //  cy.get('input[id="repeatedPassword"]').type(credentials[0].repeatepassword).should('have.value',credentials[0].repeatepassword)
-    //  cy.get('input[value="Register"]').click()
+    it.only('Positive case', () => {
+        
+      //const ln = new Register();
+      ln.setfirstname(credentials[0].Firstname)
+      ln.setlastname(credentials[0].Lastname)
+      ln.setaddress(credentials[0].Address)
+      ln.setcity(credentials[0].City)
+      ln.setstate(credentials[0].State)
+      ln.setzipcode(credentials[0].Zipcode)
+      ln.setphonenumber(credentials[0].Phonenumber)
+      ln.setssn(credentials[0].SSN)
+      ln.setusername(credentials[0].Username)
+      ln.setpassword(credentials[0].Password)
+      ln.setrepeatepassword(credentials[0].repeatepassword)
+      ln.clickonregister()
 
-    // });
+    })
+    
 
     it.skip('negetive case', () => {
     
@@ -46,22 +48,4 @@ beforeEach( ()=>{
      cy.get('input[value="Register"]').click()
 
     })
-// pom
-    it.only('POM case', () => {
-    
-      //const ln = new Register();
-      ln.setfirstname(credentials[0].Firstname)
-      ln.setlastname(credentials[0].Lastname)
-      ln.setaddress(credentials[0].Address)
-      ln.setcity(credentials[0].City)
-      ln.setstate(credentials[0].State)
-      ln.setzipcode(credentials[0].Zipcode)
-      ln.setphonenumber(credentials[0].Phonenumber)
-      ln.setssn(credentials[0].SSN)
-      ln.setusername(credentials[0].Username)
-      ln.setpassword(credentials[0].Password)
-      ln.setrepeatepassword(credentials[0].repeatepassword)
-      ln.clickonregister()
- 
-     })
   })
