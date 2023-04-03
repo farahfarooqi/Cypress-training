@@ -1,12 +1,5 @@
 {
-  "firstname": "Ali",
-  "Lastname": "sadiq",
-  "Address": "afghan park lahore",
-  "City": "Lahore",
-  "State": "Pakistan",
-  "Zipcode": "54000",
-  "Phonenumber": "03004457365",
-  "SSN": "654789",
+  
   "Username": "ali4",
   "Password": "12345",
   "repeatepassword": "12345"
