@@ -18,7 +18,7 @@
     "Firstname": "Ali",
     "Lastname": "sadiq",
     "Address": "afghan park lahore",
-    "City": "Lahore",
+    "City": " ",
     "State": "Pakistan",
     "Zipcode": "54000",
     "Phonenumber": "03004457365",
@@ -26,5 +26,19 @@
     "Username": "ali4",
     "Password": "12345",
     "repeatepassword": "12345"
+  },
+  {
+    "id" : "2",
+    "username" : "ali",
+    "password" : "12345"
+
+
+
+  },
+  {
+    "id" :"3", 
+    "username" : "ali",
+    "password" : "12345678" 
+
   }
 ]

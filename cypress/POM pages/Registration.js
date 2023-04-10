@@ -36,7 +36,9 @@ export class Register{
     }
 
     setusername(username){
-        cy.get('input[id="customer.username"]').type('dsad')
+        cy.get('input[id="customer.username"]').type(username)
+
+
     }
 
     setpassword(password){
@@ -49,6 +51,19 @@ export class Register{
 
     clickonregister(){
         cy.get('input[value="Register"]').click()
+    }
+
+    Verifyregistration(){
+        cy.get('.title').should('contain.text', 'Welcome')
+    }
+
+    Verifynotregister()
+    {
+        cy.get('.title').should('contain.text', 'Signing up')
+    }
+
+    notsetcity(city){
+        cy.get('input[id="customer.address.city"]')
     }
 
 }

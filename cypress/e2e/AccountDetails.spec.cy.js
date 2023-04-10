@@ -1,4 +1,11 @@
 /// <reference types="cypress" /> 
+
+import AccDetails from "../POM pages/AccDetails"
+import Register from "../POM pages/Registration"
+const credentials = require('../fixtures/data.json')
+const ln = new Register();
+const acc= new AccDetails();
+
 describe('Account Details', () => {
 //login user before every case
 beforeEach(()=>{
@@ -6,32 +13,39 @@ beforeEach(()=>{
     cy.url().should('eq','https://parabank.parasoft.com/parabank/index.htm')
     .and('contain','parabank.parasoft')
      cy.contains('Register').click()
-     cy.get('input[id="customer.firstName"]').type('Ali').should('have.value','Ali')
-     cy.get('input[id="customer.lastName"]').type('sadiq').should('have.value','sadiq')
-     cy.get('input[id="customer.address.street"]').type('afghan park lahore').should('have.value','afghan park lahore')
-     cy.get('input[id="customer.address.city"]').type('Lahore').should('have.value','Lahore')
-     cy.get('input[id="customer.address.state"]').type('Pakistan').should('have.value','Pakistan')
-     cy.get('input[id="customer.address.zipCode"]').type('54000').should('have.value','54000')
-     cy.get('input[id="customer.phoneNumber"]').type('03004457365').should('have.value','03004457365')
-     cy.get('input[id="customer.ssn"]').type('654789').should('have.value','654789')
-     cy.get('input[id="customer.username"]').type('ali111').should('have.value','ali111')
-     cy.get('input[id="customer.password"]').type('12345').should('have.value','12345')
-     cy.get('input[id="repeatedPassword"]').type('12345').should('have.value','12345')
-     cy.get('input[value="Register"]').click()
+     ln.setfirstname(credentials[0].Firstname)
+      ln.setlastname(credentials[0].Lastname)
+      ln.setaddress(credentials[0].Address)
+      ln.setcity(credentials[0].City)
+      ln.setstate(credentials[0].State)
+      ln.setzipcode(credentials[0].Zipcode)
+      ln.setphonenumber(credentials[0].Phonenumber)
+      ln.setssn(credentials[0].SSN)
+      // generate unique usernames
+     let username = '';
+      const characters = 'abcdefghijklmnopqrstuvwxyz';
+      for (let i = 0; i < 8; i++) {
+        username += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      ln.setusername(username)
+      ln.setpassword(credentials[0].Password)
+      ln.setrepeatepassword(credentials[0].repeatepassword)
+      ln.clickonregister()
 })
 
-    it('passes', () => {
-      cy.contains('Accounts Overview').click()
-      cy.get('.ng-scope > :nth-child(1) > .ng-binding').click()
-        cy.get('#month').select('January')
-      cy.get('#transactionType').select('All')
-      cy.get('input[value="Go"]').click()
+    it('view the details of a specific account', () => {
+
+      acc.ViewDetails()
+      acc.Verifydetails()
+    
     })
 
-    it.skip('view details in specific period', () => {
-        cy.contains('Accounts Overview').click()
-        cy.get('.ng-scope > :nth-child(1) > .ng-binding').click()
-        cy.get('#month').click()
+    it('view details in specific period', () => {
+        acc.ViewDetails()
+        acc.SetMonth()
+        acc.SetType()
+        acc.ClickGo()
+        acc.VerifyDetailsPeriod()
 
         
       })

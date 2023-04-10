@@ -13,7 +13,7 @@ beforeEach( ()=>{
   cy.contains('Register').click()
 })
 
-    it.only('Positive case', () => {
+    it('Positive case', () => {
         
       //const ln = new Register();
       ln.setfirstname(credentials[0].Firstname)
@@ -24,28 +24,46 @@ beforeEach( ()=>{
       ln.setzipcode(credentials[0].Zipcode)
       ln.setphonenumber(credentials[0].Phonenumber)
       ln.setssn(credentials[0].SSN)
-      ln.setusername(credentials[0].Username)
+     
+      // generate unique usernames
+     let username = '';
+      const characters = 'abcdefghijklmnopqrstuvwxyz';
+      for (let i = 0; i < 8; i++) {
+        username += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      ln.setusername(username)
       ln.setpassword(credentials[0].Password)
       ln.setrepeatepassword(credentials[0].repeatepassword)
       ln.clickonregister()
+      ln.Verifyregistration()
 
     })
     
 
-    it.skip('negetive case', () => {
-    
-     cy.get('input[id="customer.firstName"]').type('Ali')
-     cy.get('input[id="customer.lastName"]')
-     cy.get('input[id="customer.address.street"]').type('afghan park lahore')
-     cy.get('input[id="customer.address.city"]').type('Lahore')
-     cy.get('input[id="customer.address.state"]').type('Pakistan')
-     cy.get('input[id="customer.address.zipCode"]').type('54000')
-     cy.get('input[id="customer.phoneNumber"]').type('03004457365')
-     cy.get('input[id="customer.ssn"]').type('654789')
-     cy.get('input[id="customer.username"]').type(' dsad')
-     cy.get('input[id="customer.password"]').type('12345')
-     cy.get('input[id="repeatedPassword"]').type('12345')
-     cy.get('input[value="Register"]').click()
+    it('negetive case with fixtures and poms' , () => {
+
+      ln.setfirstname(credentials[1].Firstname)
+      ln.setlastname(credentials[1].Lastname)
+      ln.setaddress(credentials[1].Address)
+      ln.notsetcity(credentials[1].City)
+      ln.setstate(credentials[1].State)
+      ln.setzipcode(credentials[1].Zipcode)
+      ln.setphonenumber(credentials[1].Phonenumber)
+      ln.setssn(credentials[1].SSN)
+     
+      // generate unique usernames
+     let username = '';
+      const characters = 'abcdefghijklmnopqrstuvwxyz';
+      for (let i = 0; i < 8; i++) {
+        username += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      ln.setusername(username)
+      ln.setpassword(credentials[1].Password)
+      ln.setrepeatepassword(credentials[1].repeatepassword)
+      ln.clickonregister()
+      ln.Verifynotregister()
+
 
     })
+
   })
